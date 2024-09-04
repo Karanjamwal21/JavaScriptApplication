@@ -1,0 +1,45 @@
+<html >
+<head>
+
+    <title>Booking Success - AutoMob-Mechanic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>AutoMob-Mechanic</h1>
+        <nav>
+            <ul>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="logoutPage.html">Logout</a></li>
+                <li>ServiceLine@gmail.com</li>
+                <li>+91-9878965476</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Booking Success</h1>
+        <p>Your booking has been successful! Our team will contact you soon to confirm the details.</p>
+        <h2>Booking Details:</h2>
+        <ul id="booking-details">
+          
+        </ul>
+        <button onclick="location.href='logoutPage.html'">Logout</button>
+    </main>
+    <script>
+        
+        const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+        const bookingDetailsList = document.getElementById('booking-details');
+        bookingDetailsList.innerHTML = `
+            <li>Name: ${bookingDetails.name}</li>
+            <li>Email ID: ${bookingDetails.email}</li>
+            <li>Phone Number: ${bookingDetails.phone}</li>
+            <li>Service: ${bookingDetails.service}</li>
+            <li>Car Model: ${bookingDetails.carModel}</li>
+            <li>Fuel Type: ${bookingDetails.fuelType}</li>
+            <li>Appointment Date: ${bookingDetails.date}</li>
+        `;
+    </script>
+</body>
+</html>

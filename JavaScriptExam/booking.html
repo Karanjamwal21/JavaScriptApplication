@@ -1,0 +1,88 @@
+<html >
+<head>
+   
+    <title>Booking - AutoMob-Mechanic</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <h1>AutoMob-Mechanic</h1>
+
+        <nav>
+            <ul>
+               
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="logoutPage.html">Logout</a></li>
+                <li>ServiceLine@gmail.com</li>
+                <li>+91-9878965476</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Appointment Form</h1>
+        <form id="booking-form">
+            <label for="name">Name:</label>
+            
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+            <label for="service">Select a Service:</label>
+            <select id="service" name="service">
+                <option value="oil-change">Oil Change</option>
+                <option value="tire-rotation">Tire Rotation</option>
+                <option value="brake-pad-replacement">Brake Pad Replacement</option>
+                <option value="battery-replacement">Battery Replacement</option>
+                <option value="car-wash">Car Wash</option>
+            </select><br><br>
+            <label for="car-model">Car Model:</label>
+            <input type="text" id="car-model" name="car-model" required><br><br>
+            <label for="fuel-type">Fuel Type:</label>
+            <input type="radio" id="petrol" name="fuel-type" value="petrol">
+            <label for="petrol">Petrol</label>
+            <input type="radio" id="diesel" name="fuel-type" value="diesel">
+            <label for="diesel">Diesel</label>
+            <input type="radio" id="lpg" name="fuel-type" value="lpg">
+            <label for="lpg">LPG</label>
+            <input type="radio" id="other" name="fuel-type" value="other">
+            <label for="other">Other</label><br><br>
+            <label for="date">Appointment Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+            <button type="submit">Book</button>
+        </form>
+    </main>
+    <script>
+        const bookingForm = document.getElementById('booking-form');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const carModel = document.getElementById('car-model').value;
+            const fuelType = document.querySelector('input[name="fuel-type"]:checked').value;
+            const date = document.getElementById('date').value;
+
+              
+
+            if (name && email && phone && service && carModel && fuelType && date) {
+               
+            localStorage.setItem('bookingDetails', JSON.stringify({
+                 name,email,phone, service, carModel,fuelType, date
+                 }));
+
+                location.href = 'bookingSuccess.html';
+            } 
+            else {
+                alert('Please fill in all the required fields');
+            }
+        });
+
+
+    </script>
+</body>
+</html>
